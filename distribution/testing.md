@@ -11,10 +11,10 @@ Let's learn how to use them!
 
 In this article you'll learn how to use:
 
-* [PHPUnit](https://phpunit.de/index.html), a testing framework to cover your classes with unit tests and to write
-API-oriented functional tests thanks to its API Platform and [Symfony](https://symfony.com/doc/current/testing.html) integrations.
-* [Alice](https://github.com/nelmio/alice) and [its Symfony
-integration](https://github.com/hautelook/AliceBundle#database-testing), an expressive fixtures generator to write data fixtures.
+- [PHPUnit](https://phpunit.de/index.html), a testing framework to cover your classes with unit tests and to write
+  API-oriented functional tests thanks to its API Platform and [Symfony](https://symfony.com/doc/current/testing.html) integrations.
+- [Alice](https://github.com/nelmio/alice) and [its Symfony
+  integration](https://github.com/hautelook/AliceBundle#database-testing), an expressive fixtures generator to write data fixtures.
 
 Official [Symfony recipes](https://flex.symfony.com/) are provided for both tools.
 
@@ -37,23 +37,23 @@ Then, create some fixtures for [the bookstore API you created in the tutorial](i
 ```yaml
 # api/fixtures/books.yaml
 App\Entity\Book:
-    book_{1..100}:
-        isbn: <isbn13()>
-        title: <sentence(4)>
-        description: <text()>
-        author: <name()>
-        publicationDate: <dateTime()>
+  book_{1..100}:
+    isbn: <isbn13()>
+    title: <sentence(4)>
+    description: <text()>
+    author: <name()>
+    publicationDate: <dateTime()>
 ```
 
 ```yaml
 # api/fixtures/reviews.yaml
 App\Entity\Review:
-    review_{1..200}:
-        rating: <numberBetween(0, 5)>
-        body: <text()>
-        author: <name()>
-        publicationDate: <dateTime()>
-        book: '@book_*'
+  review_{1..200}:
+    rating: <numberBetween(0, 5)>
+    body: <text()>
+    author: <name()>
+    publicationDate: <dateTime()>
+    book: "@book_*"
 ```
 
 You can now load your fixtures in the database with the following command:
@@ -65,7 +65,7 @@ docker-compose exec php \
 
 To learn more about fixtures, take a look at the documentation of [Alice](https://github.com/nelmio/alice)
 and [AliceBundle](https://github.com/hautelook/AliceBundle).
-The list of available generators as well as a cookbook explaining how to create custom generators can be found in the documentation of [Faker](https://github.com/fzaninotto/Faker), the library used by Alice under the hood.
+The list of available generators as well as a cookbook explaining how to create custom generators can be found in the documentation of [Faker](https://github.com/fakerphp/faker), the library used by Alice under the hood.
 
 ## Writing Functional Tests
 
@@ -217,7 +217,7 @@ publicationDate: This value should not be null.',
             'email' => 'admin@example.com',
             'password' => 'admin',
         ]]);
-        
+
         $this->assertResponseIsSuccessful();
     }
 }
@@ -249,23 +249,23 @@ To do so, learn how to write unit tests with [PHPUnit](https://phpunit.de/index.
 
 You may also be interested in these alternative testing tools (not included in the API Platform distribution):
 
-* [Behat](http://behat.org/en/latest/) and its [Behatch extension](https://github.com/Behatch/contexts), a
+- [Behat](http://behat.org/en/latest/) and its [Behatch extension](https://github.com/Behatch/contexts), a
   [behavior-driven development (BDD)](https://en.wikipedia.org/wiki/Behavior-driven_development) framework to write the API
   specification as user stories and in natural language then execute these scenarios against the application to validate
   its behavior;
-* [Blackfire Player](https://blackfire.io/player), a nice DSL to crawl HTTP services, assert responses, and extract data
+- [Blackfire Player](https://blackfire.io/player), a nice DSL to crawl HTTP services, assert responses, and extract data
   from HTML/XML/JSON responses ([see example in API Platform Demo](https://github.com/api-platform/demo/blob/master/test-api.bkf));
-* [Postman tests](https://www.getpostman.com/docs/writing_tests) (proprietary), create functional test for your API
+- [Postman tests](https://www.getpostman.com/docs/writing_tests) (proprietary), create functional test for your API
   Platform project using a nice UI, benefit from [the Swagger integration](https://www.getpostman.com/docs/importing_swagger)
   and run tests in the CI using [newman](https://github.com/postmanlabs/newman);
-* [PHP Matcher](https://github.com/coduo/php-matcher), the Swiss Army knife of JSON document testing.
+- [PHP Matcher](https://github.com/coduo/php-matcher), the Swiss Army knife of JSON document testing.
 
 ## Using the API Platform Distribution for End-to-end Testing
 
 If you would like to verify that your stack (including services such as the DBMS, web server, [Varnish](https://varnish-cache.org/))
 works, you need [end-to-end (E2E) testing](https://wiki.c2.com/?EndToEndPrinciple).
 
-It is also useful to do a [smoke test](https://en.wikipedia.org/wiki/Smoke_testing_(software)) to check that your application
+It is also useful to do a [smoke test](<https://en.wikipedia.org/wiki/Smoke_testing_(software)>) to check that your application
 is working; for example, that the application's entrypoint is accessible. This could be used as a quick test after each
 Docker build to ensure that the Docker images are not broken.
 
